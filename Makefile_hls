@@ -1,0 +1,14 @@
+CC = g++
+CFLAGS = -Wall -O3 -std=c++11 -g
+# 增加栈大小到 64MB (67108864 字节)
+LDFLAGS = -Wl,-z,stack-size=67108864
+
+all: hnsw_hls_test
+
+hnsw_hls_test: hnsw_hls.cpp hnsw_hls_test.cpp
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $^
+
+clean:
+	rm -f hnsw_hls_test *.o
+
+.PHONY: all clean 

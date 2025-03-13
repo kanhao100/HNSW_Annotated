@@ -72,7 +72,10 @@ void randomTest(int numItems, int dim, int numQueries, int K) {
 		if (knns[0] == distPairs[0].second) numHits++;
 	}
 	// 输出测试结果: 命中次数, 暴力搜索平均时间, HNSW平均时间
-	cout << numHits << " " << total_brute_force_time / numQueries  << " " << total_hnsw_time / numQueries << endl;
+	cout << numHits << " " << total_brute_force_time / numQueries * 1000 << " " << total_hnsw_time / numQueries * 1000 << endl;
+	// 计算加速比
+	double acceleration_ratio = total_brute_force_time / total_hnsw_time;
+	cout << "Acceleration Ratio: " << acceleration_ratio << endl;
 }
 
 /**
